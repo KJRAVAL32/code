@@ -14,10 +14,11 @@ class Category:
     def _get_display_name(self, child_name=None):
         # if self.parent and child_name != '':
             if self.parent:
+                if self.parent.parent:
                 # child_name = self.parent.name
-                return f"{self.parent.name}>{self.name}"
-            else:
-                return self.name
+                    return f"{self.parent.parent.name}>{self.parent.name}>{self.name}"
+                else:
+                    return self.name
         # elif self.parent and child_name == '':
         #     if self.parent.parent:
         #         child_name = self.parent.name
@@ -25,5 +26,6 @@ class Category:
 c1=Category("vehicle",1)
 c2=Category("car",2,c1)
 c3=Category("disel",2,c2)
+c4=Category("power",2,c3)
 # print(c1.display_name)
 print(c3.display_name)
